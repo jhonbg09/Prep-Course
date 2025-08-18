@@ -6,14 +6,14 @@ function crearGato(nombre, edad) {
   // Agrega un método (funcion) llamado "meow" que devuelva el string "Meow!"
   // Devuelve el objeto
   // Tu código:
-  const newObj = {
+  const obj = {
     nombre: nombre,
     edad: edad,
     meow: function () {
       return "Meow!";
     },
   };
-  return newObj;
+  return obj;
 }
 
 function agregarPropiedad(objeto, property) {
@@ -37,8 +37,8 @@ function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
   // "objetoMisterioso" tiene una propiedad llamada "numeroMisterioso"
   // Multiplica el numeroMisterioso por 5 y devuelve el producto
   // Tu código:
-  const mult = objetoMisterioso["numeroMisterioso"] * 5;
-  return mult;
+  const product = objetoMisterioso["numeroMisterioso"] * 5;
+  return product;
 }
 
 function eliminarPropiedad(objeto, unaPropiedad) {
@@ -66,7 +66,8 @@ function tieneEmail(usuario) {
   // Devuelve "true" si el usuario tiene un valor definido para la propiedad "email"
   // De lo contrario, devuelve "false"
   // Tu código:
-  if (usuario["email"] !== null && usuario["email"] !== undefined) {
+
+  if (usuario["email"] !== null && usuario["email"] !== undefined ) {
     return true;
   } else {
     return false;
@@ -78,11 +79,7 @@ function tienePropiedad(objeto, propiedad) {
   // "propiedad" es un string
   // De lo contrario, devuelve "false"
   // Tu código:
-  if(objeto[propiedad] !== undefined){
-    return true;
-  }else{
-    return false;
-  }
+  return propiedad in objeto
 }
 
 function verificarPassword(usuario, password) {
@@ -91,8 +88,8 @@ function verificarPassword(usuario, password) {
   // De lo contrario, devuelve "false"
   // Tu código:
   if(usuario["password"] === password){
-    return true;
-  }else {
+    return true 
+  }else{
     return false;
   }
 }
@@ -101,7 +98,7 @@ function actualizarPassword(usuario, nuevaPassword) {
   // Reemplaza la contraseña existente en el objeto "usuario" con el valor de "nuevaPassword"
   // Devuelve el objeto
   // Tu código:
-  usuario.password = nuevaPassword;
+  usuario["password"] = nuevaPassword;
   return usuario;
 }
 
@@ -110,7 +107,7 @@ function agregarAmigo(usuario, nuevoAmigo) {
   // Agrega "nuevoAmigo" al final de ese array
   // Devuelve el objeto "usuario"
   // Tu código:
-  usuario["amigos"].push(nuevoAmigo)
+  usuario["amigos"].push(nuevoAmigo);
   return usuario;
 }
 
@@ -120,8 +117,8 @@ function pasarUsuarioAPremium(usuarios) {
   // Define cada propiedad "esPremium" de cada objeto como "true"
   // Devuelve el array de usuarios
   // Tu código:
-  for(let usuario in usuarios){
-    usuarios[usuario]["esPremium"] = true;
+  for(let i = 0; i < usuarios.length ; i++){
+    usuarios[i]["esPremium"] = true
   }
   return usuarios;
 }
@@ -134,9 +131,9 @@ function sumarLikesDeUsuario(usuario) {
   // Devuelve la suma
   // Tu código:
   var counter = 0
-  for(let i=0 ; i<usuario["posts"].length; i++){
+   for(var i = 0; i < usuario["posts"].length ; i++){
     counter += usuario["posts"][i]["likes"];
-  }
+   }
   return counter;
 }
 
@@ -150,11 +147,6 @@ function agregarMetodoCalculoDescuento(producto) {
   // producto.porcentajeDeDescuento -> 0.2 (o simplemente ".2")
   // producto.calcularPrecioDescuento() -> 20 - (20 * 0.2)
   // Tu código:
-  producto.calcularPrecioDescuento = function(){
-    const porcentajeDto = producto["precio"] * producto["porcentajeDeDescuento"];
-    const valorProduto =  producto["precio"] - porcentajeDto;
-    return valorProduto;
-  }
 }
 
 // No modificar nada debajo de esta línea
